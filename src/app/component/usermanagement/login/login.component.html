@@ -4,7 +4,6 @@
         <div class="row col-md-12">
             <label class="col-md-2">Username:</label>
             <div class="col-md-8"><input type="text" [(ngModel)]="userlogin.username" name="username" #username="ngModel" required /></div>
-            <div>{{userlogin.username}}</div>
             <div *ngIf="username.invalid && username.touched" class="col-md-12 alert alert-danger">
                     <div *ngIf="username.errors.required">Please enter username</div>
             </div>
@@ -16,7 +15,5 @@
         </div>
         <div class="col-md-12"><input type="submit" value="Login" [disabled]="loginform.invalid" (click)="login()" /></div>
 </form>
-<div>{{onwaydatabind}}</div>
-
 <span [innerHTML]='onwaydatabind'></span>                
 </div>
