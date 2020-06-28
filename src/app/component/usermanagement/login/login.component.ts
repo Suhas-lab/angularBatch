@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.onwaydatabind = "This is angular batch This is angular batchThis is angular batchThis is angular batchThis is angular batch ";
+    this.onwaydatabind = "This is angular batch";
     this.classattr = true;
   }
   login() : void{
