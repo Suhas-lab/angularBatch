@@ -11,8 +11,8 @@
     <button (click)="updateName()">Update Name</button>
   </p>
 
-  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
-  
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="MyFirstReactive">
+    <div>
     <label>
       First Name:
       <input type="text" formControlName="firstName">
@@ -22,6 +22,33 @@
       Last Name:
       <input type="text" formControlName="lastName">
     </label>
+  </div>
+  <div formGroupName="addressgroup">
+    <h3>Address controls</h3>
+    <label>
+      Address Line 1:
+      <input type="text" formControlName="addresslin1">
+    </label>
+
+    <label>
+      Address Line 2:
+      <input type="text" formControlName="addresslin2">
+    </label>
+
+    <label>
+      Street:
+      <input type="text" formControlName="street">
+    </label>
+    
+    <label>
+      City:
+      <input type="text" formControlName="city">
+    </label>
+    <label>
+      Zip:
+      <input type="text" formControlName="zip">
+    </label>
+  </div>
     <button type="submit" [disabled]="!profileForm.valid">Submit</button>
   </form>
 </div>
