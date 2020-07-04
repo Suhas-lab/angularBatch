@@ -3,7 +3,9 @@
 <form #loginform="ngForm" appIdentityRevealed>
         <div class="row col-md-12">
             <label class="col-md-2">Username:</label>
-            <div class="col-md-8"><input type="text" [(ngModel)]="userlogin.username" name="username" #username="ngModel" required /></div>
+            <div class="col-md-8">
+                <input type="text" [(ngModel)]="userlogin.username" name="username" #username="ngModel" required />
+            </div>
             <div *ngIf="username.invalid && username.touched" class="col-md-12 alert alert-danger">
                     <div *ngIf="username.errors.required">Please enter username</div>
             </div>
@@ -11,9 +13,15 @@
         <div class="clearfix"></div>
         <div class="row col-md-12">
             <label class="col-md-2">Password:</label>
-            <div class="col-md-8" [style.display]="classattr == true ? 'block' :'none'"><input type="password" value="passwordonst" id="password" name="password" /> </div>
+            <div class="col-md-8" clas=""><input type="password" [(ngModel)]="userlogin.password" value="" id="password" minlength="5" name="password" #password="ngModel" required/> </div>
+            <div *ngIf="password.invalid && password.touched" class="col-md-12 alert alert-danger">
+                <div *ngIf="password.errors.required">Please enter valid password</div>
+                <div *ngIf="password.errors.minlength">Please at least 5 chars for passowor</div>
+            </div>
+            
         </div>
         <div class="col-md-12"><input type="submit" value="Login" [disabled]="loginform.invalid" (click)="login()" /></div>
 </form>
-<span [innerHTML]='onwaydatabind'></span>                
+<span [innerHTML]='onwaydatabind'></span>
+Favorite Color: <input type="text" [formControl]="favoriteColorControl">                
 </div>

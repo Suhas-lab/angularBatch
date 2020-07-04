@@ -5,7 +5,7 @@ import { FormControl, FormGroup } from '@angular/forms';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  template: 'Favorite Color: <input type="text" [formControl]="favoriteColorControl">'
+  template: ''
 })
 export class LoginComponent implements OnInit {
 
@@ -13,8 +13,8 @@ export class LoginComponent implements OnInit {
   //newformgroup = new FormGroup()
 
   userlogin = {
-    username:"SuhasK",
-    password:"Admin"
+    username:"",
+    password:""
   }
   onwaydatabind : string;
   passwordonst : number;
