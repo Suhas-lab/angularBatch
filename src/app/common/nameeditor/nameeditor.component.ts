@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-nameeditor',
@@ -9,28 +9,37 @@ import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms'
 export class NameeditorComponent implements OnInit {
   name = new FormControl('');
  
-  profileForm = new FormGroup({
-    firstName: new FormControl(''),
-    lastName: new FormControl(''),
-    addressgroup : new FormGroup({
-      addresslin1 : new FormControl(''),
-      addresslin2 : new FormControl(''),
-      street : new FormControl(''),
-      city: new FormControl(''),
-      zip: new FormControl(''),
-    })
-  });
-
-  // profileForm = this.fb.group({
-  //   firstName: ['', Validators.required],
-  //   lastName: [''],
-  //   address: this.fb.group({
-  //     street: [''],
-  //     city: [''],
-  //     state: [''],
-  //     zip: ['']
-  //   }),
+  // profileForm = new FormGroup({
+  //   firstName: new FormControl(''),
+  //   lastName: new FormControl(''),
+  //   addressgroup : new FormGroup({
+  //     addresslin1 : new FormControl(''),
+  //     addresslin2 : new FormControl(''),
+  //     street : new FormControl(''),
+  //     city: new FormControl(''),
+  //     zip: new FormControl(''),
+  //   })
   // });
+
+  dummyarry: {
+    one: '1',
+    two: '2',
+    three: '3'
+  }
+
+  profileForm = this.fb.group({
+    firstName: ['', Validators.required],
+    lastName: [''],
+    addressgroup: this.fb.group({
+      street: [''],
+      city: [''],
+      state: [''],
+      zip: ['']
+    }),
+    newformgenerate: this.fb.array([
+      this.fb.control('')
+    ])  
+  });
 
 
   constructor(private fb: FormBuilder) { }
@@ -38,6 +47,15 @@ export class NameeditorComponent implements OnInit {
   ngOnInit(): void {
     this.updateProfile();
   }
+  get newformgenerate() {
+    return this.profileForm.get('newformgenerate') as FormArray;
+  }
+  
+  addAlias() {
+    this.newformgenerate.push(this.fb.control(''));
+  }
+  
+
   updateName() {
     this.name.setValue('Nancy');
   }
